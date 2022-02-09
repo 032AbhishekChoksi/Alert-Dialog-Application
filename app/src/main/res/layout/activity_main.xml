@@ -29,4 +29,16 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bttnOpenDialog" />
+
+    <Button
+        android:id="@+id/btnOpenMultipleChoice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:onClick="openMultipleChoiceDialog"
+        android:text="Open Multiple Choice Dialog"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bttnOpenChoiceDialog" />
 </androidx.constraintlayout.widget.ConstraintLayout>

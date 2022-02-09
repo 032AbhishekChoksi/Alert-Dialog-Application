@@ -8,9 +8,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
+    ArrayList selectedItems;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +47,37 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Toast.makeText(MainActivity.this, "Selected Course is : " + list[i], Toast.LENGTH_SHORT).show();
+            }
+        });
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
+    public void openMultipleChoiceDialog(View view){
+        selectedItems = new ArrayList();
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setTitle("Multiple Select Course");
+        alertDialogBuilder.setMultiChoiceItems(R.array.Course, null, new DialogInterface.OnMultiChoiceClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i, boolean isChecked) {
+                if(isChecked){
+                    selectedItems.add(i);
+                } else if(selectedItems.contains(i)){
+                    selectedItems.remove(i);
+                }
+            }
+        });
+
+        alertDialogBuilder.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Toast.makeText(MainActivity.this, selectedItems.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        alertDialogBuilder.setNegativeButton("Cencel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                finish();
             }
         });
         AlertDialog alertDialog = alertDialogBuilder.create();
