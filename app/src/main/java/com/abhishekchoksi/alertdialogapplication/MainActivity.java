@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -82,5 +84,24 @@ public class MainActivity extends AppCompatActivity {
         });
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
+    }
+
+    public void openCustomDialog(View view){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater factory = LayoutInflater.from(this);
+        View myCustView = factory.inflate(R.layout.fragment_custom_dialog,null);
+        alertDialogBuilder.setView(myCustView);
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+
+        myCustView.findViewById(R.id.btn_fragment).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText ed = myCustView.findViewById(R.id.edit_text);
+                Toast.makeText(getApplicationContext(),ed.getText().toString(),Toast.LENGTH_LONG).show();
+                alertDialog.dismiss();
+            }
+        });
     }
 }
