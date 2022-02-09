@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">AlertDialog Application</string>
-    <string name="open_dialog">Open Dialog</string>
+    <string name="open_dialog">Open Simple Dialog</string>
+    <string name="open_single_choice_dialog">Open Single Choice Dialog</string>
+    <string-array name="Course">
+        <item>ASP.Net</item>
+        <item>Java</item>
+        <item>Android</item>
+        <item>SEO</item>
+    </string-array>
 </resources>

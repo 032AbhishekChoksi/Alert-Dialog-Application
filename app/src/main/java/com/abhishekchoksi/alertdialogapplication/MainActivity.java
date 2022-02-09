@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import java.util.Arrays;
+
 public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         AlertDialog alertDialog = alertDialogbuilder.create();
+        alertDialog.show();
+    }
+
+    public void singleChoiceDialog(View view){
+        String [] list = getResources().getStringArray(R.array.Course);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setTitle("Choose Course");
+        alertDialogBuilder.setItems(R.array.Course, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Toast.makeText(MainActivity.this, "Selected Course is : " + list[i], Toast.LENGTH_SHORT).show();
+            }
+        });
+        AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
     }
 }
